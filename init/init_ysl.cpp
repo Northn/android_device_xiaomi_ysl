@@ -30,6 +30,9 @@
 #include <sys/sysinfo.h>
 #include <android-base/properties.h>
 
+#define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
+#include <sys/_system_properties.h>
+
 #include "vendor_init.h"
 #include "property_service.h"
 #include "log/log.h"
@@ -38,6 +41,17 @@ char const *heapgrowthlimit;
 char const *heapminfree;
 
 using android::base::SetProperty;
+
+void property_override(char const prop[], char const value[])
+{
+    prop_info *pi;
+
+    pi = (prop_info*) __system_property_find(prop);
+    if (pi)
+        __system_property_update(pi, value, strlen(value));
+    else
+        __system_property_add(prop, strlen(prop), value, strlen(value));
+}
 
 void check_device()
 {
@@ -55,6 +69,7 @@ void check_device()
         heapminfree = "2m";
    }
 }
+
 void set_avoid_gfxaccel_config() {
     struct sysinfo sys;
     sysinfo(&sys);
@@ -65,8 +80,18 @@ void set_avoid_gfxaccel_config() {
     }
 }
 
+void load_ysl(bool is_india)
+{
+    property_override("ro.product.model", (is_india ? "Redmi Y2" : "Redmi S2"));
+    property_override("ro.build.product", "ysl");
+    property_override("ro.product.device", "ysl");
+}
+
 void vendor_load_properties()
 {
+    std::string region = android::base::GetProperty("ro.boot.hwc", "");
+
+    load_ysl(region.find("INDIA") != std::string::npos);
     check_device();
 	set_avoid_gfxaccel_config();
 
