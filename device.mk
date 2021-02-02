@@ -467,10 +467,6 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
     XiaomiParts
 
-# RetroMusic
-PRODUCT_PACKAGES += \
-    RetroMusic
-
 # RemovePackages
 PRODUCT_PACKAGES += \
 	RemovePackages
