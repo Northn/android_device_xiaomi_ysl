@@ -469,4 +469,8 @@ PRODUCT_PACKAGES += \
 
 # RemovePackages
 PRODUCT_PACKAGES += \
-	RemovePackages
+    RemovePackages
+
+# Updates (OTA)
+PRODUCT_PACKAGES += \
+    Updates

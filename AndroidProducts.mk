@@ -14,9 +14,9 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-     $(LOCAL_DIR)/corvus_ysl.mk
+     $(LOCAL_DIR)/evolution_ysl.mk
 
 COMMON_LUNCH_CHOICES := \
-corvus_ysl-user \
-corvus_ysl-userdebug \
-corvus_ysl-eng	
+evolution_ysl-user \
+evolution_ysl-userdebug \
+evolution_ysl-eng	

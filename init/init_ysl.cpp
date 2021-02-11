@@ -85,11 +85,22 @@ void load_ysl(bool is_india)
     property_override("ro.product.device", "ysl");
 }
 
+void load_evo()
+{
+    property_override("org.evolution.build_maintainer", "Andrey Norton");
+    property_override("org.evolution.build_support_url", "https://t.me/RedmiY2Official");
+
+    // OTA
+    property_override("org.evolution.ota.version_code", "eleven");
+    property_override("sys.ota.disable_uncrypt", "1");
+}
+
 void vendor_load_properties()
 {
     std::string region = android::base::GetProperty("ro.boot.hwc", "");
 
     load_ysl(region.find("INDIA") != std::string::npos);
+    load_evo();
     check_device();
     set_avoid_gfxaccel_config();
 
