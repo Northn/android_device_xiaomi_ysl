@@ -22,12 +22,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/xiaomi/ysl/device.mk)
 
 # Inherit some common CorvusOS stuff.
-
 $(call inherit-product, vendor/corvus/config/common_full_phone.mk)
 TARGET_BOOT_ANIMATION_RES := 720
-
-# Inherit MIUI Camera
-$(call inherit-product, vendor/MiuiCamera/config.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := ysl
