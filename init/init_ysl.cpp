@@ -102,7 +102,7 @@ void vendor_load_properties()
     load_ysl(region.find("INDIA") != std::string::npos);
     load_evo();
     check_device();
-    set_avoid_gfxaccel_config();
+    //set_avoid_gfxaccel_config();
 
     property_override("dalvik.vm.heapstartsize", "16m");
     property_override("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
